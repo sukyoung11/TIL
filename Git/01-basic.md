@@ -62,7 +62,7 @@ $ rm -rf .git/
 
 ```visual basic
 $git add <file name> # 파일 (변경사항) 올리기
-$gir add . # 현재 위치에 있는 모든 파일 (변경사항) 올리기
+$git add . # 현재 위치에 있는 모든 파일 (변경사항) 올리기
 ```
 
 ### Commit
@@ -91,16 +91,37 @@ $git status #현재 상황 확인
 백업할 장소를 지정하기 (단순히 가리키는 것)
 
 ```
-$ git remote add origin http://git-hub.com ~~ # 깃허브 홈페이지에 나와있는 링크 연결
+$ git remote add origin http://git-hub.com ~~ # 깃허브 홈페이지에 나와있는 주소(링크) 연결
+$ git remote -v # 연결 된 주소 확인
 ```
 
 ### 올리기(백업)
 
 ```
-$ git push origin master #깃허브에 올리기
+$ git push origin master # 깃허브에 올리기
 ```
 
 ## readme / .gitignore
+
+
+
+## git hub에서 컴퓨터로 불러오기
+
+### git hub에서 리포 복제해오기
+
+맨 처음 한 번 실행
+
+```
+$ git clone 주소 # 리포->코드 클릭했을 때 나오는 clone 주소
+```
+
+### git hub의 내용 받아오기
+
+```
+$ git pull origin master
+```
+
+
 
 
 
