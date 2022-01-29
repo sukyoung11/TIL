@@ -1,4 +1,4 @@
-# 	OOP 객체지향 프로그래밍
+# OOP 객체지향 프로그래밍
 
 ## 객체
 
@@ -105,13 +105,13 @@ a.append(4)
 
 함수 내부에 인스턴스를 던져주도록 설계
 
-메소드를 정의할 때 self 로 받도록
+메소드를 정의할 때 `self` 로 받도록
 
 - self
 
   인스턴스 자기 자신
 
-### 생성자 메소드
+### - 생성자 메소드
 
 인스턴트 객체가 생성될 때 자동으로 호출되는 메소드
 
@@ -121,11 +121,11 @@ a.append(4)
 
 `__init__(    )`
 
-### 소멸자 메소드
+### - 소멸자 메소드
 
 `__del__`
 
-### 매직 메소드
+### - 매직 메소드
 
 `__`
 
@@ -151,7 +151,7 @@ Circle.pi
 
 ### 클래스 메소드
 
- 클래스를 조작하고 싶을 때
+ **클래스를 조작하고 싶을 때**
 
 함수 내부에 클래스를 던져 주도록 설계
 
@@ -177,13 +177,34 @@ class My class:
 
 ### 스태틱 메소드
 
-클래스가 사용할 메소드
+해당 클래스가 사용할 메소드
 
 @데코레이터를 사용하여 정의
 
 인자를 아무것도 넘겨주지 않음
 
 클래스나 인스턴스를 조작할 생각은 없는데 함수를 쓸거야ㅑ...
+
+
+
+```python
+# 인스턴스 메소드, 클래스 메소드, 스태틱 메소드 정리
+
+class Myclass:
+    
+    def method(self):
+        return 'instance method' , self
+    
+    @classmethod
+    def classmethod(cls):
+        return 'class method', cls
+    
+    @staticmethod
+    def staticmethod():
+        return 'static method'
+```
+
+
 
 
 
@@ -203,17 +224,54 @@ class My class:
 
 상속을 통해 메소드를 재사용할 수 있음 (코드 재사용성 높아짐)
 
-`isinstance` 로 확인 가능
+- `isinstance` 로 확인 가능
 
-`issubclass(하위, 상위)` 
+```python
+class Person:
+	pass
+class Professor(Person):
+	pass
+class Student(Person):
+	pass
+	
+p1 = Person()
+prof1 = Professor()
+s1 = Student()
 
-`super()`  - 메소드 오버라이딩
+isinstance(p1, Person) # True
+isinstance(s1, Person) # True
+isinstance(p1, Student) #False
+```
 
+- `issubclass(하위, 상위)` 
 
+오른쪽이 왼쪽의 상위 클래스인지 여부
 
-다중 상속ㄴ
+```python
+issubclass(Student, Person) # True
 
-mro메소드   인스턴스 --> 자식 클래스 --> 부모 클래스 순으로 탐색
+issubclass(bool, int) # True
+issubclass(float, int) # False
+```
+
+- `super()`  
+
+자식클래스에서 부모 클래스를 사용하고 싶은 경우
+
+부모클래스의 요소 호출 가능
+
+- **메소드 오버라이딩**
+
+자식클래스에서 재정의 가능
+
+부모 클래스 talk( ) --> 안녕하세요 일때, 자식클래스 talk() --> 안녕! 으로 바꾸기 가능
+
+- 다중 상속
+
+  두개 이상의 클래스를 상속 받는 경우, 중복된 속성이나 메소드는 상속 순서에 의해 결정됨
+
+- mro메소드   
+- 인스턴스 --> 자식 클래스 --> 부모 클래스 순으로 탐색
 
 ### 다향성
 
@@ -221,9 +279,9 @@ mro메소드   인스턴스 --> 자식 클래스 --> 부모 클래스 순으로 
 
 즉, 서로 다른 클래스에 속해있는 객체들이 동일한 메세지에 대해 다른 방식으로 응답할 수 있움
 
-오버라이드
+**오버라이드** 
 
-기존에 있던 걸 덮어쓴다
+기존에 있던 걸 재정의, 덮어쓰기
 
 ### 캡슐화
 
@@ -231,7 +289,101 @@ mro메소드   인스턴스 --> 자식 클래스 --> 부모 클래스 순으로 
 
 파이썬에서 암묵적으로 존재하지만, 언어적으로는 존재하지 않음
 
- 
+ ``` python
+ class Person:
+ 	def get_name(self):
+ 		return self.name
+ 		
+ 	def set_name(self.name):
+         self.name = name
+ ```
+
+``` 
+p2 = Person()
+p2.set_name()
+```
+
+접근제어자 종류
+
+- public Acess Modifier - 어디서나
+- Protected - 상속관계
+
+​        언더바 1개로 시작, 암묵적 규칙에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
+
+​        하위클래스 오버라이드 허용
+
+```python
+class Person:
+	def __init__(self, name, age):
+        self.name = name
+        self._age = age
+		
+	def get_age(self):
+        return self._age
+    
+    
+p1 = Person(김싸피, 30)
+p1.get_age()  # 30 , protect method는 get_age 메소드를 활용하여 호출
+       
+```
+
+- Private - 본인민
+
+  언더바 2개로 시작
+
+  본 클래스 내부에서만 사용 가능
+
+  하위 상속, 호출 불가능
+
+  외부 호출 불가능
+
+  ```python
+  class Person:
+  	def __init__(self, name, age):
+          self.name = name
+          self.__age = age
+  		
+  	def get_age(self):
+          return self.__age
+      
+      
+  p1 = Person(김싸피, 30)
+  p1.get_age()  # 30 , private method는 get_age 메소드를 활용하여 호출
+  p1.__age #오류
+  ```
+
+
+
+- getter, setter 메소드
+
+  getter 는  변수의 값을 읽는 메소드 - @property 데코레이터 사용
+
+  setter는 변수의 값을 설정하는 메소드 @변수.setter사용
+
+``` python
+class Person:
+    def __init__(self, age):
+        self._age = age
+     
+    @Property
+    def age(self):
+        return self._age
+    
+    @age.setter
+    def age(self, new age):
+        return self.age = new age - 10
+
+    
+p1 = Person(10)
+
+p1.age()  # 오류, @property - 메서드를 정의했는데 속성처럼 쓰도록 한다
+
+p1.age() #setter가 있으면 값을 조작 가능
+```
+
+
+
+
 
 
 
