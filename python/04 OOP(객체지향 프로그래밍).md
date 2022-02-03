@@ -129,6 +129,16 @@ a.append(4)
 
 `__`
 
+`__str__` print()를 썼을 때 어떤 결과가 나올 지 지정, 프린트 함수 쓸 때 자동으로 호출
+
+`__repr__` 기계가 읽을 수 있는 형태로 문자 출력
+
+`__len__` 길이 지정
+
+`__gt__` greater than - 대소비교 >
+
+`__lt__` less than <
+
 특정한 함수를 호출할 때 내부적으로 특정 메소드가 실행되도록
 
 
@@ -159,7 +169,7 @@ Circle.pi
 
 메소드를 정의할 때 `cls`로 받도록
 
-``` 
+``` python
 class My class:
 	
 	@classmethod
