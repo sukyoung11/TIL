@@ -8,7 +8,7 @@
 
 ## 우선순위
 
-
+!important - inline style - id 선택자 - class 선택자 - 요소 선택자 - 소스 순서
 
 
 
@@ -50,9 +50,9 @@
 
 ### 결합자
 
-자식 결합자
+자식 결합자 - 한 단계 아래에 있는 것만
 
-자손 결합자
+자손 결합자 - 아래단계는 모두 포함
 
 인접 형제 결합자
 
@@ -62,13 +62,13 @@
 
 ## CSS 박스 모델
 
+![css box model](https://poiemaweb.com/img/box-model.png)
+
 모든 요소는 네모이고 위에서 아래로 왼쪽에서 오른쪽으로
 
-상우좌하
+상우하좌
 
 
-
-Margin bordre padding
 
 
 
