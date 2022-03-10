@@ -100,3 +100,23 @@ POST 형태로 요청을 보내려면 form method를 활용해야 함
 
 ## ORM
 
+`python mange.py makemigrations`
+
+`python manage.py migrate`
+
+`python manage.py shell_plus`
+
+
+
+
+
+## 가상환경,프로젝트,앱 만들기
+
+```
+python -m venv venv
+source venv/Scripts/activate
+pip install django==3.2.12
+django-admin startproject 프로젝트명 .
+python manage.py startapp 앱이름
+```
+
