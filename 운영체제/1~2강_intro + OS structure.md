@@ -58,7 +58,7 @@ A kernel is the core of operating system that is running at all times on the com
 
 운영체제(os)의 심장이자 OS를 규정짓는 매우 중요한 부분. 하드웨어의 자원을 자원이 필요한 프로세스에 나눠주고, 프로세스 제어(태스크 매니저), 메모리 제어, 프로그램이 운영체제에 요구하는 system call 등을 수행하는 부분으로 운영체제 맨 하부에서 돌아간다. 현재 많이 사용되고 있는 OS는 커널 위에 여러 가지 레이어를 올린 것. 
 
-## mertiprogramming
+## multiprogramming
 
 여러개의 프로그램을 동시에 메모리에 올려놓고 동시에 실행 - cpu효율을 높일 수 있음
 
@@ -82,7 +82,7 @@ A kernel is the core of operating system that is running at all times on the com
 
 ![image-20220402142827778](OS.assets/image-20220402142827778.png)
 
-## operaring system service
+## operating system service
 
 - system calls 
 
