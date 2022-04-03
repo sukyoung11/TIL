@@ -123,19 +123,26 @@ int main()
 	pid_t pid, pid1;
 	pid = fork();
 	if (pid == 0) { // child process
-		pid1 = getpid();
-		printf("child: pid = %d\n", pid); //A
-		printf("child: pid1 = %d\n", pid1); //B
+		pid1 = getpid(); // pid1은 child pid
+		printf("child: pid = %d\n", pid); // C
+		printf("child: pid1 = %d\n", pid1); // D
 	}
 	else if(pid > 0) { // parent process
-		pid1 = getpid();
-		printf("parents: pid = %d\n", pid); //C
-		printf("parents: pid1 = %d\n", pid1); //D
+		pid1 = getpid(); // pid1은 parents pid
+		printf("parents: pid = %d\n", pid); // A
+		printf("parents: pid1 = %d\n", pid1); // B
 		wait(NULL);
 	}
 	return 0;
 }
 
+```
+
+```
+parents: pid = 5157 (child pid) - A
+parents: pid1 = 5156 (parents pid) - B
+child: pid = 0    - C
+child: pid1 = 5157 (parents pid) - D
 ```
 
 
@@ -152,7 +159,7 @@ int main() {
 	int i;
 	
 	pid = fork();
-	}
+	
 	if (pid == 0) { // child process
 		for (i = 0; i < SIZE; i++) {
 		nums[i] *= i;
@@ -165,6 +172,13 @@ int main() {
 		printf("PARENT: %d \n", nums[i]); // LINE X
 		}
 	}
+    return 0
+}
 
+```
+
+```
+0 1 4 9 16
+1 2 3 4 5
 ```
 
