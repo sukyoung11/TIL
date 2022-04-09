@@ -24,3 +24,32 @@
 모델 필드 속성에 맞는 HTML element를 만들어 줌
 
 form의 내용을  DB에 저장
+
+
+
+### 이미지 업로드
+
+`ImageField()`
+
+파일이 아닌 경로가 삽입 됨
+
+pillow라이브러리 필요함
+
+
+
+`FileField()` 의 상속을 받음
+
+두개의 선택 인자 가짐
+
+`image = models.ImageField(upload_to='images/',blank=True)
+
+
+
+설치파일 그대로 설치할 때는
+
+pip install -r requirements.txt
+
+
+
+1. setting.py에 media_root, media_url 설정
+2. uploadto에 media_root하위 경로 지정
