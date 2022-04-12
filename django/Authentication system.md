@@ -69,7 +69,10 @@ HTTP쿠키는 상태가 있는 세션을 만들어 줌
 
 
 
+### 쿠키 lifetime
 
+1. session cookies
+2. persistent cookies
 
 
 
