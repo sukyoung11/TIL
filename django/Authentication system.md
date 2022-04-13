@@ -67,12 +67,37 @@ HTTP쿠키는 상태가 있는 세션을 만들어 줌
 
 아이디는 세션을 구별하기 위해 필요하며 쿠키에는 아이디만 저장 - 아이디에 대한 값은 서버가 갖고 있음
 
+** 로그아웃은 세션 삭제
+
 
 
 ### 쿠키 lifetime
 
-1. session cookies
-2. persistent cookies
+수명 주기에 따라 두가지 방법으로 정의
+
+- session cookies
+
+​	현재 세션이 종료되면 삭제 - 현재 브라우저가 종료되면 끝남
+
+- persistent cookies
+
+​	expires 속성에 지정된 날짜 또는 max-age 속성에 지정된 기간이 지나면 삭제
+
+
+
+### Session in Django
+
+Django의 세션은 미들웨어를 통해 구현됨
+
+Djangi는 database-backed sessions 저장 방식을 기본 값으로 사용
+
+Django는 특정 session id를 포함하는 쿠키를 사용해서 각각의 브라우저와 사이트가 연결된 세션을 알아냄
+
+모든 쿠키를 세션으로 써서 db에 저장하면 서버에 부하가 걸릴 수 있음 따라서 브라우저 저장/ db저장 적절히 나눔
+
+** 미들웨어는 http요청과 응답 처리 중간에서 작동하는 시스템
+
+미들웨어를 거쳐 해당 url에 등록되어 있는 view로 연결해주고 http 응답 역시 미들웨어를 거침
 
 
 
@@ -82,3 +107,14 @@ HTTP쿠키는 상태가 있는 세션을 만들어 줌
 
 리퀘스트를 보내지 않아도 됨
 
+
+
+## 로그인
+
+로그인은 session을 create하는 로직
+
+### AuthenticationForm
+
+사용자 로그인을 위한 form, request를 첫번째 인자로 받음
+
+ 
