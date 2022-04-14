@@ -115,6 +115,109 @@ Django는 특정 session id를 포함하는 쿠키를 사용해서 각각의 브
 
 ### AuthenticationForm
 
-사용자 로그인을 위한 form, request를 첫번째 인자로 받음
+사용자 로그인을 위한 form, request를 첫번째 인자로 받음 , 그냥 폼
 
- 
+ ### login()
+
+​	`login(request,user,backend = None)`
+
+`def login()`(view) 함수와 혼동 방지를 위해 `auth_login()` 으로 씀
+
+### context processor
+
+템플릿이 랜더링 될 때 자동으로 호출 가능한 컨텍스트 데이터 목록
+
+![image-20220414024733357](Authentication system.assets/image-20220414024733357.png)
+
+- Users - 현재 로그인한 사용자를 나타내는 auth.Users 인스턴스  - {{user}} 에 저장 됨
+
+### 로그인 사용자에 대한 접근 제한
+
+- is_authenticated
+
+​		user에 대해 항상 `True`, AnonymousUser 면 `False`
+
+​		권한과는 관련이 없으며, 사용자가 활성화 상태인지, 유효한 세션을 갖고 있는지 확인 x
+
+- @ login_required
+
+  로그인 되어있으면 정상적으로 view 함수 실행
+
+  next 경로로 이동
+
+  
+
+## 로그아웃
+
+session delete
+
+### logout()
+
+`logout(request)`
+
+session data를 서버의 DB에서도 지우고,  클라이언트의 쿠키에서도 session id 삭제
+
+왜 쿠키에서도 삭제 ? 다른 사람이 동일한 웹 브라우저를 사용해 로그인하고 이전 사용자의 세션 데이터에 엑세스 하는 것 방지
+
+
+
+## 회원가입
+
+### UserCreationForm
+
+3개의 필드 - username, password1, password2
+
+모델폼
+
+
+
+## 회원탈퇴
+
+DB에서 user삭제
+
+request.user.delete()
+
+
+
+## 회원정보 수정
+
+### UserChangeForm
+
+모델폼
+
+`UserChangeForm(instance = request.user)`
+
+위의 form은 admin 사용자에게만 보여야하는 필드가 다 보이기 때문에 따로 커스텀 필요
+
+### CustomUserChangeForm()
+
+form.py 에서 커스텀
+
+모델은 UseChangeForm 상속 
+
+**Meta**
+
+- model = get_user_model()
+
+- field = ('원하는 필드들')
+
+
+
+## 비밀번호 변경
+
+### PasswordChangeForm
+
+이전 비밀번호 입력하여 비밀번호를 변경할 수 있도록 함
+
+이전 비밀번호 입력 없이 비밀번호를 설정할 수 있는 SetPasswordForm(form)을 상속받는 서브 클래스
+
+user인자가 필요함
+
+### 암호 변경 시 세션 무효화 방지
+
+`update_session_auth_hash(request,user)`
+
+원래는 비밀번호 변경되면 로그아웃 됨 - 기존 세션과의 회원 인증 정보와 일치하지 않기 때문
+
+따라서 비밀번호를 바꿔도 로그아웃 되지 않도록 새로운 password hash로 session 업데이트
+
