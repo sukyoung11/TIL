@@ -90,7 +90,7 @@ number = 10 // 재할당 불가능, 에러발생
 
 if, for, 함수 등의 중괄호 내부를 가리킴
 
-블록 스코프를 가지는 변수는 블록 바깥에서 접근 불가능
+블록 스코프를 가지는 변수는 블록 바깥에서 접근 불가능 - `let`,`const`
 
 ```javascript
 let x = 1
@@ -146,7 +146,7 @@ const x = 10  // 에러
 
   정수/실수 구분 안함
 
-  NaN 계산 불가능 한 경우 반환되는 값
+  `NaN` 계산 불가능 한 경우 반환되는 값
 
 - 문자열
 
@@ -189,6 +189,7 @@ const x = 10  // 에러
 - 일치비교연산자 `===`  - 우리가 아는 원래 아는 `==`  
 
 - 논리 연산자- `&&` `||` `!`
+  - 삼항 연산자 `(true ? 1 : 2)` - 왼쪽 조건식이 참이면 `:` 앞의 값, 아니면 뒤의 값
 
 
 
@@ -196,9 +197,90 @@ const x = 10  // 에러
 
 ## 조건문
 
+### `if`
+
+```javascript
+if (nation === 'korea'){
+    console.log('안녕')
+} else if (nation === 'france' ) {
+    console.log('Bonjour')
+} else {
+    console.log('hello')
+}
+```
+
+
+
+### `switch`
+
+표현식의 결과값을 이용한 조건문
+
+```javascript
+switch(nation) {
+    case 'korea' : {
+        console.log('안녕')
+        break
+    }
+    case 'france' : {
+        console.log('Bonjour')
+        break
+    }
+    defalt: {
+        console.log('hello')
+    }
+}
+```
+
+`break` 가 없으면 참인 조건 밑의 구문들 모두 다 실행
+
 
 
 ## 반복문
+
+### `while`
+
+```javascript
+while (i<6){
+    console.log(i)
+    i++ // i+=1
+}
+```
+
+
+
+### `for`
+
+`:` 으로 구분되는 세 부분으로 구성
+
+```javascript
+for (let i=0; i<10; i++){
+    console.log(i)
+}
+```
+
+
+
+### `for ... in`
+
+주로 객체(자바스크립트에서 말하는 객체는 딕셔너리)의 속성 순회
+
+```javascript
+for (let capital in caritals) {
+    console.log(capital) // key값 출력
+}
+```
+
+
+
+### ` for ... of`
+
+반복 가능한 객체 순회 - array, map
+
+``` javascript
+for (let fruit of fruits) {
+    console.log(fruit)
+} //파이썬에서의 for fruit in fruit:
+```
 
 
 
