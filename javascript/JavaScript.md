@@ -107,6 +107,8 @@ console.log(x) // 1
 
 var 로 선언한 변수는 재선언 재할당 모두 가능
 
+함수스코프
+
 ```javascript
 var number = 10
 var number = 50
@@ -284,3 +286,266 @@ for (let fruit of fruits) {
 
 
 
+## 함수
+
+함수를 정의하는 방법
+
+1. 함수 선언식
+
+2. 함수 표현식
+
+자바 스크립트의 함수는 일급 객체
+
+**일급객체**
+
+1. 변수에 할당 가능
+
+2. 함수의 매개변수로 전달 가능
+
+3. 함수의 반환 값으로 사용 가능
+
+매개 변수와 인자의 개수 불일치 허용 (인자 개수 적으면 undefined반환)
+
+### 함수 선언식
+
+함수의 이름과 함께 정의
+
+호이스팅 가능 ( 함수 정의 전에 호출하기)
+
+```javascript
+function 함수의 이름(매개변수){
+    몸통
+}
+
+function add(num1,num2) {
+    return num1 + num2
+}
+add(1,2)
+
+```
+
+### 함수 표현식
+
+함수를 표현식 내에서 정의하는 방식
+
+함수의 이름을 생략하고 익명 함수로 정의 가능
+
+호이스팅 불가능
+
+```javascript
+const add = function (num1,num2) {
+    return num1+num2
+}
+add(1,2)
+```
+
+### rest parameter(...)
+
+함수가 정해지지 않은 수의 매개변수를 배열로 받음 (python의 *args)
+
+rest parameter로 처리한 매개변수에 인자가 넘어오지 않을 경우 빈 배열로 처리
+
+### spread operator(...)
+
+배열 인자를 전개하여 전달 가능
+
+``` javascript
+const spread = function(x,y,z){
+    return x+y+z
+}
+const numbers = [1,2,3]
+spread(...numbers) // 6
+```
+
+
+
+## Arrow Function
+
+함수를 간결하게 정의하는 문법
+
+fuction 키워드 생략 가능
+
+매개변수가 하나면 ( ) 생략 가능
+
+몸통의 표현식이 하나라면 { }, return 생략 가능
+
+```javascript
+const arrow1 = function(name){
+    return `hello, ${name}`
+}
+const arrow1 = name => `hello,${name}`
+```
+
+
+
+## 문자열
+
+### includes
+
+```string.includes(value)```
+
+문자열에 value가 존재하는지 판별 후, true/false 반환
+
+### split
+
+`string.split(value)`
+
+```javascript
+const str = 'a cat'
+str.split() // ['a cat']
+str.split('') //['a',' ','c','a','t']
+str.split(' ') // 해당 문자열로 나눈 나머지 반환 ['a','cat']
+```
+
+### replace
+
+```javascript
+str.replace(' ','-') # 1개만 교체
+str.replaceAll(' ','-') # 모두 교체
+```
+
+### trim
+
+```javascript
+srting.trim() // 문자열 시작과 끝의 모든 공백문자 제거
+string.trimStart() // 문자열 시작의 공백문자 제거
+str.trimEnd() // 문자열 끝의 공백문자 제거
+```
+
+
+
+## 배열
+
+배열의 길이는 `array.length`
+
+### reverse
+
+```javascript
+array.reverse()
+```
+
+### push & pop
+
+``` javascript
+array.push(100) // 배열의 가장 뒤에 요소 추가
+array.pop() // 배열의 마지막 요소 제거
+```
+
+### unshift & shift
+
+```javascript
+array.unshift(100) // 배열의 가장 앞에 요소 추가
+array.shift() // 배열의 첫번째 요소 제거
+```
+
+### includes
+
+`array.includes(value)`
+
+배열에 value가 존재하는지 판별 후, true/false 반환
+
+### index0f
+
+`array.index0f(value)`
+
+배열에 특정 값이 존재하는지 확인 후 가장 첫번째로 찾은 요소의 인덱스 반환
+
+없으면 -1반환
+
+### join
+
+`array.join([separator])`
+
+separator는 선택적으로 지정, 생략 시 쉼표가 기본값
+
+### spread operator
+
+배열 내부에서 배열 전개 가능
+
+얕은 복사에 활용 가능
+
+```javascript
+const array = [1,2,3]
+const newArray = [0,...array,4]
+console.log(newArray) // [0,1,2,3,4]
+```
+
+
+
+여기서 부터는 인자로 callback함수를 받음
+
+callback함수 - 어떤 함수의 내부에서 실행 될 목적으로 인자를 넘겨받는 함수
+
+### forEach
+
+배열의 각 요소에 콜백 함수를 한번 씩 실행
+
+```javascript
+array.forEach(배열의 요소,[배열 요소의 인덱스,배열 자체])
+const fruits = ['딸기','수박','참외']
+
+fruits.forEach((fruit,index) => {
+    console.log(fruit,index)
+})
+```
+
+### map
+
+배열의 각 요소에 콜백 함수를 한번 씩 실행 
+
+반환 값을 요소로 하는 새로운 배열 반환
+
+```javascript
+const numbers = [1,2,3]
+
+const newnumbers = numbers.map((num)=>{return num*2})
+console.log(newnumbers)
+```
+
+### filter
+
+return 값이 참인 요소들을 모아 새로운 배열 반환
+
+```
+const oddnums = numbers.filter((num,index)=> {return num%2})
+```
+
+### reduce
+
+배열의 각 요소에 대해 callback함수를 한번 씩 실행
+
+콜백 함수의 반환값을 하나의 값(acc)에 누적 후 반환
+
+주요 매개 변수
+
+- acc - 값이 누적되는 변수
+- initialValue - 최조 콜백 함수 호출 시 acc에 할당되는 값, defalt는 배열의 첫번째 값
+
+```javascript
+const number = [1,2,3]
+const result = numbers.reduce((acc,num)=>{return acc+num},0)
+console.log(result) // 6
+```
+
+### find
+
+배열의 각 요소에 대해 콜백 함수를 한번 씩 실행
+
+콜백 함수의 반환 값이 참이면 조건을 만족하는 첫번째 요소 반환
+
+찾는 값이 배열에 없으면  undefined반환
+
+```javascript
+const avengers = [{name: 'tony', age:45},
+                 {name: 'tom', age:50}]
+const result = avengers.find((avenger) => {
+    return avenger.name === 'tony'
+})
+console.log(result) // {name: 'tony', age:45}
+```
+
+### some & every
+
+some - 배열 중 하나라도 주어진 판별 함수를 통과하면 참을 반환
+
+every - 배열의 모든 요소가 주어진 판별 함수를 통과할 경우 참을 반환
