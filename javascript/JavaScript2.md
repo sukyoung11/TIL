@@ -46,6 +46,14 @@ DOM 조작 순서 - 1. 선택 2.변경
 
 
 
+추가
+
+append
+
+appendchild
+
+
+
 
 
 ## Event
