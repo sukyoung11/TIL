@@ -90,7 +90,7 @@ Vanilla JS vs Vue.js
 
 `v-if = "  "` 
 
-`v-else-if = "  "`
+`v-else-if = "  "` true면 그 뒤의 값을 나타냄
 
 -> show 와의 차이점은 if는 false일 때 아예 랜더링을 하지 않음, show는 그냥 화면에서 hidden
 
@@ -100,15 +100,19 @@ Vanilla JS vs Vue.js
 
 `v - for = "item in items"`
 
-`v - for = "(item,idx) in items"`
+`v - for = "(item,idx) in items"` enumerate와 비슷 ( 근데 idx가 뒤에 나오는)
 
 
 
-`v-bind` 기본 속성과 vue연결 --> `:` 로 축약 가능
+`v-bind` 
+
+html 요소의 속성에 vue의 상태 데이터 값을 할당
+
+기본 속성과 vue연결 --> `:` 로 축약 가능
 
 `<div :class="{active : isRed}">`  - isRed가 true면 class에 active 적용
 
-`v-for` 와 key bind 무조건
+`v-for` 와 key bind 무조건 - 이때 key값은 독립적인 값을 주면 ok `:key="idx"`, `:key="todo.id"`
 
 
 
@@ -120,7 +124,9 @@ Vanilla JS vs Vue.js
 
 `@submit.prevent`
 
-`@ketup`
+`@keyup`
+
+`@keyup.space` 특정 key지정 가능 - space 쳤을 때만 이벤트 발생
 
 
 
@@ -128,6 +134,15 @@ Vanilla JS vs Vue.js
 
 
 
-## computed & methods
+computed는 계산된 값 - 데이터에 의존하는 계산된 값 ( 즉 메시지가 변하지 않으면 계속 원래 결과를 갖고 있음)
 
-computed는 계산된 값
+우리가 가진 값을 바꿔서 쓰고 싶을 때
+
+함수가 아닌 값
+
+데이터를 기반으로 값을 만들어내야할 때 사용
+
+
+
+## Lifecycle Hooks
+
