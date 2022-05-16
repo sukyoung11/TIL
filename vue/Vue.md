@@ -146,3 +146,4 @@ computed는 계산된 값 - 데이터에 의존하는 계산된 값 ( 즉 메시
 
 ## Lifecycle Hooks
 
+created()
