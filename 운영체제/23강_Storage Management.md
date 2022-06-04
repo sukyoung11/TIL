@@ -61,7 +61,7 @@ bootstrap loader - 전원이 인가 됐을 때 컴퓨터를 구동시키기 위�
 
 이걸 nvm에 저장해놓고 운영체제 커널 로드
 
-
+?
 
 ## RAID
 
@@ -122,3 +122,70 @@ RAID 5 - 각 디스크에 parity 비트 줌
 RAID6
 
 다차원 RAID6
+
+![image-20220603225916545](23강_Storage Management.assets/image-20220603225916545.png)
+
+
+
+# I/O System
+
+two main job of a computer - I/O and Computing
+
+![image-20220603230551110](23강_Storage Management.assets/image-20220603230551110.png)
+
+OS - I/O control, I/O device 관리
+
+
+
+## Memory mapped I/O
+
+메모리에 I/O 명령을 주면 control register의 역할 수행 가능
+
+## Three types of I/O
+
+- **polling (busy-waiting)**
+
+  busy bit가 clear될 때 까지 반복적으로 status register를 읽음
+
+- **interrupt**
+
+  interrupt가 감지되면 ISR(interrupt service routine)한테 신호 넘겨줌
+
+- **DMA**(direct memory access)
+
+  데이터가 많을 때 사용 
+
+## Blocking I/O VS Nonblocking I/O
+
+Blocking I/O - a thread is suspended -> wating queue로 감
+
+Nonblocking - 바로 return 
+
+Asynchronous System Call - 실행을 계속 함
+
+non-blocking 과의 차이점은 요청만 하고 바로 자기 할 일을 함 ( 뭔소리? )
+
+
+
+
+
+# File System Interface
+
+logical 하게 data와 program을 access
+
+file
+
+directory
+
+
+
+## Access Method
+
+
+
+
+
+## Allocation Method
+
+
+
