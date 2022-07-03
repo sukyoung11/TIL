@@ -20,9 +20,17 @@
 
 ### MTV Pattern
 
+- MVC Pattern
+
+  model - view - controller
+
+- django에서는 MTV
+
 model - templete - view
 
-요청 -> URLS -> View -> 응답
+요청(http request) -> URLS -> View -> 응답(HTML)
+
+이때 view는 model과 데이터를 주고 받으며 필요시에는 template에서 적절한 HTML을 가져옴  
 
 
 
