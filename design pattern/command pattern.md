@@ -12,7 +12,7 @@
 
 --> 이벤트가 발생했을 때 실행될 기능이 다양하면서도 변경이 필요한 경우 이벤트를 발생시키는 클래스를 변경하지 않고 재사용할 수 있음
 
-![image-20220617233139789](C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20220617233139789.png)
+![image-20220617233139789](command pattern.assets/image-20220617233139789.png)
 
 --> 어떤 객체(A)에서 다른 객체(B)의 메서드를 실행하려면 그 객체(B)를 참조하고 있어야 하는 의존성이 발생하지만, 커맨드 패턴을 적용하면 의존성을 제거할 수 있음
 
@@ -103,7 +103,7 @@ Button 클래스의 pressed 메서드에서 구체적인 기능(램프 켜기, �
 
 
 
-![img](https://gmlwjd9405.github.io/images/design-pattern-command/command-solution.png)
+![img](command pattern.assets/command-solution.png)
 
 Button 클래스는 미리 약속된 Command 인터페이스의 execute 메서드를 호출
 램프를 켜는 경우에는 theLamp.turnOn 메서드를 호출하고, 알람이 동작하는 경우에는 theAlarm.start 메서드를 호출하도록 pressed 메서드 수정

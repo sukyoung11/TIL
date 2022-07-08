@@ -62,9 +62,9 @@ model - templete - view
 
 urls.py 파일에서 path('주소'/불러올 함수) - 요청을 보내고 응답을 받는 과정
 
-view함수는 무조건 request가 필요함
+view함수는 무조건 request가 필요함 - 첫번째 인자, return의 첫번째 인자
 
-
+두번째 인자는 template(html)
 
 ## Template
 
@@ -72,11 +72,17 @@ view함수는 무조건 request가 필요함
 
 따라서 templates/파일안에 앱과 같은 이름의 폴더 생성, 그 안에 html을 추가함
 
+### template inheritance
 
+템플릿 상속은 기본적으로 코드의 재사용성에 초점을 맞춤
+
+따라서 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의 할 수 있는 블록을 정의하는 기본 
 
 BASE_DIR 은 프로젝트의 root 폴더
 
+{% block content }
 
+{ % include }
 
 url을 통해서 들어가면 무조건 GET 형태로 요청이 들어감
 
@@ -84,11 +90,36 @@ POST 형태로 요청을 보내려면 form method를 활용해야 함
 
 
 
-{% %} 는 template tags 
+### DTL (django template language)
+
+view함수 return값의 세번째 인자로 변수를 전달할 수 있음
+
+-> template에서는 이 변수를 { { } }로 활용 가능  `{{variable}}`
+
+이때 변수가 늘어나면 view함수 내에서 딕셔너리 형태로 사용 가능(context) - 변수명은 key값
+
+`{{variable.key}}`
+
+- django template tag
+
+`{{ variable|filter }}`    ex) {{ variable|lower }}
+
+- {% %} 는 template tags 
+
+반복 또는 논리를 수행하여 제어 흐름을 만들 수 있음
+
+
+
+### django tempate system
+
+- 표현과 로직을 분리 - 템플릿 시스템은 표현을 제어하는 도구이자 표현에 관련된 로직
+- 중복을 배제 - header nav footer 이러한 요소를 하 곳에 저장하기 쉽게 하여 중복 요소를 없애야 한다.
 
 
 
 ## Model
+
+웹 애플리케이션의 데이터를 구조화하고 조작하기 위한 도구
 
 ### 데이터베이스
 
@@ -108,6 +139,14 @@ POST 형태로 요청을 보내려면 form method를 활용해야 함
 
 ## ORM
 
+객체 지향 프로그래밍 언어를 사용하여 호환되지 않는 유형의 시스템 간에(Django - SQL)데이터를 변환하는 프로그래밍 기술
+
+OOP 프로그래밍에서 RDBMS를 연동할 때, 데이터베이스와 객체지향프로그래밍 언어 간의 호환되지 않는 데이터를 변환하는 프로그래밍 기법
+
+Django는 내장 Django ORM을 사용함
+
+--> DB를 객체로 조작하기 위해 ORM을 사용함
+
 `python mange.py makemigrations`
 
 `python manage.py migrate`
@@ -115,6 +154,20 @@ POST 형태로 요청을 보내려면 form method를 활용해야 함
 `python manage.py shell_plus`
 
 
+
+## CRUD
+
+>  HTTP Method
+
+- GET
+
+​	특정 리소스를 가져오도록 요청할 때, DB에 변화를 주지 않음, CRUD의 R
+
+- POST
+
+​	서버로 데이터를 전송할 때, 리소스를 생성/변경하기 위해 데이터를 HTTP body에 담아 전송
+
+​	CRUD의 C,U,D
 
 
 
